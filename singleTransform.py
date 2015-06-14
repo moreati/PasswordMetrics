@@ -63,7 +63,7 @@ def mobileos_key(c):
     else:
         return 50
 
-def permute(password, key=simple_key):
+def permute(password, key=mobileos_key):
     '''Return a permuted of a password that is easier to type on a mobile
     device.
 
@@ -71,9 +71,9 @@ def permute(password, key=simple_key):
     hence reduce the number of keystrokes.
 
     >>> permute('m#o)fp^2aRf207')
-    'Rmofpaf2207#)^'
-    >>> permute('m#o)fp^2aRf207', key=mobileos_key)
     'Rmofpaf2207)#^'
+    >>> permute('m#o)fp^2aRf207', key=simple_key)
+    'Rmofpaf2207#)^'
     '''
     return ''.join(sorted(password, key=key))
 
