@@ -86,14 +86,9 @@ def permute(password, key=mobileos_key):
 def main():
     import sys
 
-    # take in an argument from the command line 
     password = sys.argv[1]
-
-    # Call the primary function
-    newPass = permute(password)
-
-    # print result
-    print newPass
+    new_password = permute(password)
+    print(new_password)
 
 if __name__ == '__main__':
     main()
