@@ -14,9 +14,6 @@
 
 import sys
 
-# take in an argument from the command line 
-password = sys.argv[1]
-
 # Create arrays to hold characters
 lowerArray = []
 upperArray = []
@@ -42,18 +39,22 @@ def charSwap(text):
 			symbolArray.append(c)
 	return (upper, lower, digit, space)
 
-# Call the primary function
-charSwap(str(password))
+if __name__ == '__main__':
+    # take in an argument from the command line 
+    password = sys.argv[1]
 
-# .join merges characters from an array into a string 
-tempUpperPass = ''.join(upperArray)
-tempLowerPass = ''.join(lowerArray)
-tempDigitPass = ''.join(digitArray)
-tempSymbolPass = ''.join(symbolArray)
+    # Call the primary function
+    charSwap(password)
 
-# Concatenate all the strings
-newPass = tempUpperPass + tempLowerPass + tempDigitPass + tempSymbolPass
+    # .join merges characters from an array into a string 
+    tempUpperPass = ''.join(upperArray)
+    tempLowerPass = ''.join(lowerArray)
+    tempDigitPass = ''.join(digitArray)
+    tempSymbolPass = ''.join(symbolArray)
 
-# print result
-print newPass
+    # Concatenate all the strings
+    newPass = tempUpperPass + tempLowerPass + tempDigitPass + tempSymbolPass
+
+    # print result
+    print newPass
 
