@@ -34,6 +34,12 @@
 
 import string
 
+__all__ = ['MOBILEOS_COMMON_SYMBOLS',
+           'simple_key',
+           'mobileos_key',
+           'permute',
+           ]
+
 MOBILEOS_COMMON_SYMBOLS = '''!"$&'(),-./:;?@'''
 
 def simple_key(c):
@@ -77,7 +83,7 @@ def permute(password, key=mobileos_key):
     '''
     return ''.join(sorted(password, key=key))
 
-if __name__ == '__main__':
+def main():
     import sys
 
     # take in an argument from the command line 
@@ -89,3 +95,5 @@ if __name__ == '__main__':
     # print result
     print newPass
 
+if __name__ == '__main__':
+    main()
