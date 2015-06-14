@@ -12,24 +12,17 @@
 # a file containing the password makes it perform better    ##
 ##############################################################
 
-# This is the heart of the script
-##  Runs through each character of a string and
-##  places it into an array  
-def charSwap(text):
-	upperArray = []
-	lowerArray = []
-	digitArray = []
-	symbolArray = []
-	for c in text:
+def permute(password):
+    def key(c):
 		if c in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
-                        upperArray.append(c)
+			return 10
 		elif c in "abcdefghijklmnopqrstuvwxyz":
-			lowerArray.append(c)
+			return 20
 		elif c in "0123456789":
-			digitArray.append(c)
+			return 30
 		else : 
-			symbolArray.append(c)
-	return upperArray, lowerArray, digitArray, symbolArray
+			return 40
+    return ''.join(sorted(password, key=key))
 
 if __name__ == '__main__':
     import sys
@@ -38,16 +31,7 @@ if __name__ == '__main__':
     password = sys.argv[1]
 
     # Call the primary function
-    upperArray, lowerArray, digitArray, symbolArray = charSwap(password)
-
-    # .join merges characters from an array into a string 
-    tempUpperPass = ''.join(upperArray)
-    tempLowerPass = ''.join(lowerArray)
-    tempDigitPass = ''.join(digitArray)
-    tempSymbolPass = ''.join(symbolArray)
-
-    # Concatenate all the strings
-    newPass = tempUpperPass + tempLowerPass + tempDigitPass + tempSymbolPass
+    newPass = permute(password)
 
     # print result
     print newPass
