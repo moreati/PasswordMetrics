@@ -12,16 +12,17 @@
 # a file containing the password makes it perform better    ##
 ##############################################################
 
-def permute(password):
-    def key(c):
-		if c in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
-			return 10
-		elif c in "abcdefghijklmnopqrstuvwxyz":
-			return 20
-		elif c in "0123456789":
-			return 30
-		else : 
-			return 40
+def simple_key(c):
+    if c in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
+        return 10
+    elif c in "abcdefghijklmnopqrstuvwxyz":
+        return 20
+    elif c in "0123456789":
+        return 30
+    else:
+        return 40
+
+def permute(password, key=simple_key):
     return ''.join(sorted(password, key=key))
 
 if __name__ == '__main__':
