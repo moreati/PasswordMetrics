@@ -15,7 +15,7 @@ def long_description():
 
 setup(
     name='password-permute',
-    version='0.1',
+    version='0.2',
     description="Rearrange generated passwords so they're easier to type "
                 "on a mobile device",
     long_description=long_description(),
