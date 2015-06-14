@@ -1,4 +1,6 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 ##############################################################
 ## This program takes a string as input (a password) and    ##
 ##  permutes the password.				    				##
@@ -12,7 +14,27 @@
 # a file containing the password makes it perform better    ##
 ##############################################################
 
+# Depths of printable ASCII symbols on mobile operating systems
+# Key:
+#   1 Available on the default keyboard
+#   2 Available by switching keyboard once.
+#   3 Available by switching keyboard twice.
+#   - Not available, or requires a long press
+# Source: http://jfranklin.me/prez/ACSAC-Poster-FINAL.pdf
+#
+#           ␠ ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~
+# ---------------------------------------------------------------------------
+# iOS 8     1 2 2 2 2 2 2 2 2 2 2 2 1 2 1 2 2 2 3 3 3 2 2 3 3 3 3 2 3 3 3 3 3
+# Android L 1 2 2 3 2 3 2 2 2 2 3 3 2 2 2 2 2 2 3 3 3 2 2 3 3 3 3 3 - 3 3 3 3
+# WinPh 8.1 1 2 2 2 2 2 2 2 2 2 2 3 2 2 1 2 2 2 3 3 3 2 2 3 2 3 3 3 - 3 3 3 3
+#
+# MAXIMUM   1 2 2 3 2 3 2 2 2 2 3 3 2 2 2 2 2 2 3 3 3 2 2 3 3 3 3 3 - 3 3 3 3
+# ---------------------------------------------------------------------------
+#           ␠ ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~
+
 import string
+
+MOBILEOS_COMMON_SYMBOLS = '''!"$&'(),-./:;?@'''
 
 def simple_key(c):
     if c in string.ascii_uppercase:
@@ -23,6 +45,13 @@ def simple_key(c):
         return 30
     else:
         return 40
+
+def mobileos_key(c):
+    simple = simple_key(c)
+    if simple < 40 or c in MOBILEOS_COMMON_SYMBOLS:
+        return simple
+    else:
+        return 50
 
 def permute(password, key=simple_key):
     return ''.join(sorted(password, key=key))
