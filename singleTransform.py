@@ -37,6 +37,10 @@ import string
 MOBILEOS_COMMON_SYMBOLS = '''!"$&'(),-./:;?@'''
 
 def simple_key(c):
+    '''Return a sort key to order characters by case, digits etc.
+
+    The groups are: uppercase, lowercase, digits, other.
+    '''
     if c in string.ascii_uppercase:
         return 10
     elif c in string.ascii_lowercase:
@@ -47,6 +51,12 @@ def simple_key(c):
         return 40
 
 def mobileos_key(c):
+    '''Return a sort key to order characters by mobile OS keyboard depth.
+
+    The groups are: uppercase, lowercase, digits, common symbols, other.
+    Common symbols are those available from the level 2 keyboard, across
+    mobile operating systems.
+    '''
     simple = simple_key(c)
     if simple < 40 or c in MOBILEOS_COMMON_SYMBOLS:
         return simple
@@ -54,6 +64,17 @@ def mobileos_key(c):
         return 50
 
 def permute(password, key=simple_key):
+    '''Return a permuted of a password that is easier to type on a mobile
+    device.
+
+    Characters are grouped to minimize switching between keyboards, and
+    hence reduce the number of keystrokes.
+
+    >>> permute('m#o)fp^2aRf207')
+    'Rmofpaf2207#)^'
+    >>> permute('m#o)fp^2aRf207', key=mobileos_key)
+    'Rmofpaf2207)#^'
+    '''
     return ''.join(sorted(password, key=key))
 
 if __name__ == '__main__':
