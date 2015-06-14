@@ -14,16 +14,14 @@
 
 import sys
 
-# Create arrays to hold characters
-lowerArray = []
-upperArray = []
-digitArray = []
-symbolArray = []
-
 # This is the heart of the script
 ##  Runs through each character of a string and
 ##  places it into an array  
 def charSwap(text):
+	upperArray = []
+	lowerArray = []
+	digitArray = []
+	symbolArray = []
 	for c in text:
 		if c in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
                         upperArray.append(c)
@@ -33,13 +31,14 @@ def charSwap(text):
 			digitArray.append(c)
 		else : 
 			symbolArray.append(c)
+	return upperArray, lowerArray, digitArray, symbolArray
 
 if __name__ == '__main__':
     # take in an argument from the command line 
     password = sys.argv[1]
 
     # Call the primary function
-    charSwap(password)
+    upperArray, lowerArray, digitArray, symbolArray = charSwap(password)
 
     # .join merges characters from an array into a string 
     tempUpperPass = ''.join(upperArray)
