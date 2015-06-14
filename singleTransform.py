@@ -13,8 +13,6 @@
 ##############################################################
 
 import sys
-import timeit
-import re
 
 # take in an argument from the command line 
 password = sys.argv[1]
