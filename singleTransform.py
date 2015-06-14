@@ -12,12 +12,14 @@
 # a file containing the password makes it perform better    ##
 ##############################################################
 
+import string
+
 def simple_key(c):
-    if c in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
+    if c in string.ascii_uppercase:
         return 10
-    elif c in "abcdefghijklmnopqrstuvwxyz":
+    elif c in string.ascii_lowercase:
         return 20
-    elif c in "0123456789":
+    elif c in string.digits:
         return 30
     else:
         return 40
