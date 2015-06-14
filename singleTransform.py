@@ -24,20 +24,15 @@ symbolArray = []
 ##  Runs through each character of a string and
 ##  places it into an array  
 def charSwap(text):
-	upper = lower = digit = space = 0
 	for c in text:
 		if c in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
-                        upper += 1
                         upperArray.append(c)
 		elif c in "abcdefghijklmnopqrstuvwxyz":
-			lower += 1
 			lowerArray.append(c)
 		elif c in "0123456789":
-			digit += 1
 			digitArray.append(c)
 		else : 
 			symbolArray.append(c)
-	return (upper, lower, digit, space)
 
 if __name__ == '__main__':
     # take in an argument from the command line 
