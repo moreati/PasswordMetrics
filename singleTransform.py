@@ -12,8 +12,6 @@
 # a file containing the password makes it perform better    ##
 ##############################################################
 
-import sys
-
 # This is the heart of the script
 ##  Runs through each character of a string and
 ##  places it into an array  
@@ -34,6 +32,8 @@ def charSwap(text):
 	return upperArray, lowerArray, digitArray, symbolArray
 
 if __name__ == '__main__':
+    import sys
+
     # take in an argument from the command line 
     password = sys.argv[1]
 
